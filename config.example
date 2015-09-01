@@ -5,6 +5,7 @@ HOST=hostname
 USER=username
 PORT=22
 DIR="/some/folder/ /that/you/want/ /to/back/up/"
+ID_FILE="/some/ssh/id/file"
 
 # User information
 EMAIL=me@domain.net
