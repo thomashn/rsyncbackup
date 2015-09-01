@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Rsync options
+HOST=hostname
+USER=username
+PORT=22
+DIR="/some/folder/ /that/you/want/ /to/back/up/"
+
+# User information
+EMAIL=me@domain.net
+COMPUTER=mycomputer
+
+# Program options
+OS="osx"
+RUN_WAIT=120 # Minutes

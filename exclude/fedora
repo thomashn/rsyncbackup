@@ -1,0 +1,101 @@
+# Many of the rules are taken from https://gist.github.com/rubo77/8ffaadbc58ab099d2bc3/
+
+# contains mounted file systems
+.gvfs
+.local/share/gvfs-metadata
+# contains the actual encrypted home directory
+.Private
+# session-specific
+.dbus
+.cache
+.Trash
+.local/share/Trash
+# cached info about audio CDs
+.cddb
+# cached packages lists
+.aptitude
+
+#Flash-specific:
+
+# Cache for flash, maybe others?
+.adobe
+# except for Flash persistence, there is no reason to keep this
+.macromedia
+
+#Files:
+
+# contains errors from the current graphical session
+.xsession-errors
+# recently used files
+.recently-used
+.recently-used.xbel
+.thumbnails
+# session-specific
+.Xauthority
+.ICEauthority
+.gksu.lock
+.pulse  # directory
+.pulse-cookie
+.esd_auth
+
+#Firefox-specific (see also Profile folder):
+
+.mozilla/firefox/*/Cache
+# in case Fx crashes dumps will be stored in this
+.mozilla/firefox/*/minidumps
+# session-specific 
+.mozilla/firefox/*/.parentlock
+# phishing database, recreated
+.mozilla/firefox/*/urlclassifier3.sqlite
+# blacklisted extensions
+.mozilla/firefox/*/blocklist.xml
+# extension database, recreated on startup
+.mozilla/firefox/*/extensions.sqlite
+.mozilla/firefox/*/extensions.sqlite-journal
+.mozilla/firefox/*/extensions.rdf
+.mozilla/firefox/*/extensions.ini
+.mozilla/firefox/*/extensions.cache
+# cached UI data, recreated
+.mozilla/firefox/*/XUL.mfasl
+.mozilla/firefox/*/XPC.mfasl
+.mozilla/firefox/*/xpti.dat
+.mozilla/firefox/*/compreg.dat
+
+#Google Chrome:
+
+.config/google-chrome/Default/Local Storage
+.config/google-chrome/Default/Session Storage
+.config/google-chrome/Default/Application Cache
+.config/google-chrome/Default/History Index *
+
+#GnuPG:
+
+.gnupg/rnd
+.gnupg/random_seed
+.gnupg/.#*
+.gnupg/*.lock
+.gnupg/gpg-agent-info-*
+
+#Other apps:
+
+# Pidgin
+.pulse/icons
+# Cached applets
+.java/deployment/cache
+.icedteaplugin
+.icedtea
+.gnome2/epiphany/favicon_cache
+
+# Steam
+.steampath
+.steampid
+.steam
+.local/share/Steam
+
+lost+found
+*.git
+.ssh
+.hjemmebackup
+.lesshst
+.Trash
+rsync.meta
