@@ -95,7 +95,7 @@
 lost+found
 *.git
 .ssh
-.hjemmebackup
+.rsyncbackup
 .lesshst
 .Trash
-rsync.meta
+rsync.date

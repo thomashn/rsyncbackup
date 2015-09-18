@@ -105,7 +105,7 @@ importConfig()
 			errorExit "Wrong os specified!"
 		fi
 		
-		META="USER=$USER;EMAIL=$EMAIL;COMPUTER=$COMPUTER"
+		#META="USER=$USER;EMAIL=$EMAIL;COMPUTER=$COMPUTER"
 		
 		return 0
 	else

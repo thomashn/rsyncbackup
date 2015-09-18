@@ -1,5 +1,5 @@
 #!/bin/sh
-ROOT=~/.hjemmebackup
+ROOT=~/.rsyncbackup
 CONFIG=$ROOT/config
 UTILS=$ROOT/utilities.sh
 BLOCK=/tmp/backupblock
@@ -8,8 +8,7 @@ BLOCK=/tmp/backupblock
 if [ -f $UTILS ]; then
 	. $UTILS
 else
-	echo "ERROR: Missing file 'utilities.sh'"
-	exit 1
+	exitError "ERROR: Missing file 'utilities.sh'"
 fi
 
 # Get alle the variables in the config file
@@ -38,10 +37,10 @@ fi
 
 if rsync -z --exclude-from=$EXCLUDE --rsh="ssh -i $ID_FILE -C -p $PORT" --delete -a $DIR $USER@$HOST:$EXTDIR; then
 	echo "Rsync ran without problems."
-	echo "$META;LASTRUN=$(date +%s)" > /tmp/rsync.meta
-	if rsync -z --rsh="ssh -i $ID_FILE -C -p $PORT" --delete -a /tmp/rsync.meta $USER@$HOST:$EXTDIR; then
+	echo "$(date +%s)" > /tmp/rsync.date
+	if rsync -z --rsh="ssh -i $ID_FILE -C -p $PORT" -a /tmp/rsync.date $USER@$HOST:$EXTDIR; then
 		setUnixStamp $LASTRUN	
-		sendNotification "Hjemmebackup" "Sikkerhetskopiering fullført."
+		sendNotification "$NOTIFY_TITLE" "$NOTIFY_SUCCESS"
 	else
 		echo "Problem occured during ssh run."
 	fi

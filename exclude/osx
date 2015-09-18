@@ -1,6 +1,6 @@
-.hjemmebackup
+.rsyncbackup
 .ssh
-rsync.meta
+rsync.date
 #.backup 
 Dropbox
 .dropbox
