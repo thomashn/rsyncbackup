@@ -14,3 +14,5 @@ COMPUTER=mycomputer
 # Program options
 OS="osx"
 RUN_WAIT=120 # Minutes
+NOTIFY_TITLE="Rsyncbackup"
+NOTIFY_SUCCESS="Backup completed"
