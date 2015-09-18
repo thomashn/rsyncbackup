@@ -58,7 +58,7 @@ timePassed()
 
 checkVariable() 
 {
-	if [ -z $1 ]; then
+	if [ -z "$1" ]; then
 		if [ $# -eq 2 ]; then
 			errorExit "The variable $2 is not set!"
 		else
@@ -76,15 +76,15 @@ importConfig()
 		. $1
 		checkVariable "$EMAIL" "EMAIL"	
 		checkVariable "$USER" "USER"	
-		checkVariable "$ROOT" "ROOT"	
-		checkVariable "$COMPUTER" "COMPUTER"	
-		checkVariable "$RUN_WAIT" "RUN_WAIT"	
-		checkVariable "$PORT" "PORT"	
-		checkVariable "$HOST" "HOST"	
-		checkVariable "$OS" "OS"	
-		checkVariable "$ID_FILE" "ID_FILE"	
-		checkVariable "$NOTIFY_TITLE" "NOTIFY_TITLE"	
-		checkVariable "$NOTIFY_SUCCESS" "NOTIFY_SUCCESS"	
+		checkVariable "$ROOT" "ROOT"
+		checkVariable "$COMPUTER" "COMPUTER"
+		checkVariable "$RUN_WAIT" "RUN_WAIT"
+		checkVariable "$PORT" "PORT"
+		checkVariable "$HOST" "HOST"
+		checkVariable "$OS" "OS"
+		checkVariable "$ID_FILE" "ID_FILE"
+		checkVariable "$NOTIFY_TITLE" "NOTIFY_TITLE"
+		checkVariable "$NOTIFY_SUCCESS" "NOTIFY_SUCCESS"
 		
 		RUN_WAIT=$(minutes $RUN_WAIT)
 		
