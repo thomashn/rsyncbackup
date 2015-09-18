@@ -83,6 +83,8 @@ importConfig()
 		checkVariable "$HOST" "HOST"	
 		checkVariable "$OS" "OS"	
 		checkVariable "$ID_FILE" "ID_FILE"	
+		checkVariable "$NOTIFY_TITLE" "NOTIFY_TITLE"	
+		checkVariable "$NOTIFY_SUCCESS" "NOTIFY_SUCCESS"	
 		
 		RUN_WAIT=$(minutes $RUN_WAIT)
 		
