@@ -1,3 +1,51 @@
 # Folder that contains backup scripts
 .rsyncbackup
 rsync.date
+
+# Firefox
+AppData/Local/Mozilla/Firefox/**/cache2/
+AppData/Roaming/Mozilla/Firefox/**/parent.lock
+AppData/Roaming/Mozilla/Firefox/**/safebrowsing
+AppData/Local/Mozilla/Firefox/**/thumbnails/
+AppData/Roaming/Mozilla/Firefox/**/jetpack
+AppData/Roaming/Mozilla/Firefox/**/places.sqlite*
+
+# Spotify
+AppData/Roaming/Spotify
+AppData/Local/Spotify
+
+#AppData
+AndrMask
+#Contacts
+#Cookies
+#Desktop
+#Documents
+Downloads
+#Favorites
+g2mdlhlpx.exe
+hpremote
+#Links
+#Lokale instillinger
+Maler
+#Mine dokumenter
+#Music
+ntuser.*
+NTUSER.*
+.regtrans-ms
+#Pictures
+#Programdata
+#Recent
+#Saved Games
+#Searches
+#SendTo
+Skrivere
+Start-meny
+temp
+test
+Videos
+
+# Windows stuff
+AppData/Local/Microsoft/Windows
+AppData/Roaming/Microsoft/Windows
+AppData/Local/Microsoft/Outlook
+AppData/Local/Temp
