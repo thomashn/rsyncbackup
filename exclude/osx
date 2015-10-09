@@ -6,7 +6,7 @@ rsync.date
 .dropbox
 .git
 Downloads
-#Applications
+Applications
 Library/Saved\ Application\ State/*
 Library/Caches/*
 #Library
