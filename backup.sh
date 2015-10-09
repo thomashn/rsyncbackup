@@ -35,7 +35,7 @@ if ! lockFile $BLOCK $(hours 2); then
 	errorExit "Backup process is already running!"
 fi
 
-if rsync -z --exclude-from=$EXCLUDE --rsh="ssh -i $ID_FILE -C -p $PORT" --delete -a $DIR $USER@$HOST:$EXTDIR; then
+if rsync -v -i -z --exclude-from=$EXCLUDE --rsh="ssh -i $ID_FILE -C -p $PORT" --delete -a $DIR $USER@$HOST:$EXTDIR; then
 	echo "Rsync ran without problems."
 	echo "$(date +%s)" > /tmp/rsync.date
 	if rsync -z --rsh="ssh -i $ID_FILE -C -p $PORT" -a /tmp/rsync.date $USER@$HOST:$EXTDIR; then
