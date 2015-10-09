@@ -2,7 +2,7 @@
 .ssh
 rsync.date
 #.backup 
-Dropbox
+#Dropbox
 .dropbox
 .git
 Downloads
