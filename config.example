@@ -8,11 +8,12 @@ DIR="/some/folder/ /that/you/want/ /to/back/up/"
 ID_FILE="/some/ssh/id/file"
 
 # User information
-EMAIL=me@domain.net
 COMPUTER=mycomputer
 
 # Program options
 OS="osx"
 RUN_WAIT=120 # Minutes
+BW_LIMIT="yes" # yes or no
+BW_MIN=300 # kB/s
 NOTIFY_TITLE="Rsyncbackup"
 NOTIFY_SUCCESS="Backup completed"

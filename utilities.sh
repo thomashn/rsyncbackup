@@ -74,7 +74,6 @@ importConfig()
 {
 	if [ -f $1 ]; then
 		. $1
-		checkVariable "$EMAIL" "EMAIL"	
 		checkVariable "$USER" "USER"	
 		checkVariable "$ROOT" "ROOT"
 		checkVariable "$COMPUTER" "COMPUTER"
@@ -85,7 +84,9 @@ importConfig()
 		checkVariable "$ID_FILE" "ID_FILE"
 		checkVariable "$NOTIFY_TITLE" "NOTIFY_TITLE"
 		checkVariable "$NOTIFY_SUCCESS" "NOTIFY_SUCCESS"
-		
+		checkVariable "$BW_LIMIT" "LIMIT_BW"
+		checkVariable "$BW_MIN" "MIN_BW"
+
 		RUN_WAIT=$(minutes $RUN_WAIT)
 		
 		STORAGE=$ROOT/data # Where to save information between runs
@@ -154,5 +155,22 @@ sendNotification()
 		osascript -e 'display notification "'"$2"'" with title "'"$1"'"'	
 	elif [ $OS == "windows" ]; then
 		echo "Forget Windows!"
+	fi
+}
+
+uploadBenchmark()
+{
+	# $1 hostname
+	# This function uses iperf to get the bandwidth. The results are
+	# in csv format and sed extracts the last value in the string; which
+	# is the bandwidth number in bits/seconds.
+	
+	bw=$(iperf -c $1 -t 6 -y c | sed -n 's|.*,\([0-9][0-9]*\)$|\1|p')
+	if [ "$bw" -ge "0" ] 2>/dev/null;then
+		echo $bw
+		return 0
+	else
+		echo "ERROR"
+		return 1
 	fi
 }
