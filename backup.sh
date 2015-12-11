@@ -41,7 +41,7 @@ fi
 # It's not nice to use all the bandwidth, or to do
 # backup on a slow network
 if [ $BW_LIMIT == "yes" ]; then
-	if ! which iperf; then
+	if ! which iperf &> /dev/null; then
 		errorExit "ERROR: Iperf is not in path. Is it installed?"
 	fi
 
