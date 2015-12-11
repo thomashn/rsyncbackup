@@ -28,6 +28,16 @@ if [ ! -f $LASTRUN ]; then
 	setUnixStamp $LASTRUN	
 fi
 
+# Has there been enough time between backups
+if [ ! $(timePassed $(cat $LASTRUN)) -ge $RUN_WAIT ]; then
+	errorExit "The last backup was not long enough ago."
+fi
+
+# Only one backup at a time
+if ! lockFile $BLOCK $(hours 2); then
+	errorExit "Backup process is already running!"
+fi
+
 # It's not nice to use all the bandwidth, or to do
 # backup on a slow network
 if [ $BW_LIMIT == "yes" ]; then
@@ -37,10 +47,12 @@ if [ $BW_LIMIT == "yes" ]; then
 
 	bw=$(uploadBenchmark $HOST)
 	if [ $bw == "ERROR" ]; then
+		rm $BLOCK
 		errorExit "ERROR: Could not measure bandwidth"
 	elif [ $bw -le $(echo "$BW_MIN*8000" | bc) ]; then
 		# If the network is too slow, there is no need to
 		# keep polling the server very often.
+		rm $BLOCK
 		setUnixStamp $LASTRUN
 		errorExit "ERROR: The available network is too slow."
 	fi
@@ -48,16 +60,6 @@ if [ $BW_LIMIT == "yes" ]; then
 	echo "Limiting bandwidth to $tbw kB/s"
 	else
 	tbw=0
-fi
-
-# Has there been enough time between backups
-if [ ! $(timePassed $(cat $LASTRUN)) -ge $RUN_WAIT ]; then
-	errorExit "The last backup was not long enough ago."
-fi
-
-# Only one backup at a time
-if ! lockFile $BLOCK $(hours 2); then
-	errorExit "Backup process is already running!"
 fi
 
 if rsync --bwlimit=$tbw -v -i -z --exclude-from=$EXCLUDE --rsh="ssh -i $ID_FILE -C -p $PORT" --delete -a $DIR $USER@$HOST:$EXTDIR; then
